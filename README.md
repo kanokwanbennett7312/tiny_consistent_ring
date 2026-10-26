@@ -41,3 +41,10 @@ This library implements exactly that, with no third-party dependencies. The trad
 - The ring space is 2**128 positions wide; key and node positions are derived from md5 of the key string. md5 is used only for its uniform, deterministic distribution, not for any cryptographic property.
 - `add_node` called twice with the same name is a silent no-op, not an error. This keeps idempotent provisioning code simple.
 - `remove_node` for a missing name raises `KeyError`, matching built-in collection semantics rather than swallowing the mistake.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
