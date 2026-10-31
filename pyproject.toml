@@ -1,6 +1,6 @@
 [project]
 name = "tiny-consistent-ring"
-version = "0.1.0"
+version = "0.1.1"
 description = "Consistent hash ring using virtual nodes to distribute keys across a dynamic set of nodes with minimal disruption."
 requires-python = ">=3.10"
 dependencies = []
